@@ -1,0 +1,29 @@
+# photoview
+A digital photo viewer that displays a description and comment with the image.
+
+This simple viewer displays a photo image along with a description and comment
+and date taken, all obtained (if present) from the exif data in the image file.
+
+Better viewers undoubtably exist, but I found it necessary to write this because
+I couldn't find another viewer that would display this information (without
+all the other exif data).
+
+The description and comment fields can be written to the jpeg file using
+another of my projects, photodesc.
+
+I hope this is of use to someone - I certainly find it useful - and I of course
+welcome constructive suggestions, contributions etc.
+
+Technical stuff.
+It's written as a qt project using qt creator. The exiv2 library is used for
+access to the exif data. It works ok on my Fedora Linux system and I would
+not expect any problems with other Linux distributions. It's probably
+portable to Windows, but since I don't use Windows myself I'm not really
+interested in doing it.
+
+According to the exif spec I found, the Photo.UserComment has, in its first 8
+bytes, a zero padded format name (eg ascii). But looking at files from one
+of my cameras I found this field began with charset="Ascii", and that this part
+is not displayed when using the gnome image viewer, so I adopted the same
+strategy.
+
